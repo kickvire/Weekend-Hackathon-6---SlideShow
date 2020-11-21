@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../styles/App.css";
-//import slides from "./../data";
-import Slides from "./Slides";
 export default function App(props) {
   const [index, setIndex] = useState(0);
   const { slides } = props;
@@ -27,15 +25,18 @@ export default function App(props) {
   };
 
   return (
-    <div className="App">
-      <Slides
-        index={index}
-        onRestart={handleReset}
-        onPrev={handleprev}
-        onNext={handleNext}
-        text={slides[index].text}
-        title={slides[index].title}
-      />
-    </div>
+    <>
+      <h1 data-testid="title">{slides[index].title}</h1>
+      <p data-testid="text">{slides[index].text}</p>
+      <button data-testid="button-prev" onClick={() => handleprev(index)}>
+        Prev
+      </button>
+      <button data-testid="button-next" onClick={() => handleNext(index)}>
+        Next
+      </button>
+      <button data-testid="button-restart" onClick={() => handleReset(index)}>
+        Restart
+      </button>
+    </>
   );
 }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../styles/App.css";
-import slides from "./../data";
+//import slides from "./../data";
 import Slides from "./Slides";
-export default function App() {
+export default function App(props) {
   const [index, setIndex] = useState(0);
-
+  const { slides } = props;
   const n = slides.length;
   const handleNext = (index) => {
     if (index === n - 1) {
